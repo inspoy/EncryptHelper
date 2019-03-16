@@ -13,10 +13,10 @@ namespace TestConsole
             var key = "HelloWorld!";
             var e = Encoding.UTF8;
             rc4.SetKeyAndInit(key);
-            var seceret = rc4.Encrypt(e.GetBytes(raw));
-            Console.WriteLine(e.GetString(seceret));
+            var secret = rc4.Encrypt(e.GetBytes(raw));
+            Console.WriteLine(e.GetString(secret));
             rc4.SetKeyAndInit(key);
-            var real = rc4.Encrypt(seceret);
+            var real = rc4.Encrypt(secret);
             Console.WriteLine(e.GetString(real));
         }
     }
