@@ -21,4 +21,16 @@ var decrypted = rc4.Encrypt(encrypted);
 
 ## Aes
 
-> TODO...
+File `Aes.cs`
+
+Usage: see `TestConsole/TestAes.cs`
+
+> Algorithm is from `System.Security.Cryptography`
+
+## Rsa
+
+File `Rsa.cs`
+
+Usage: see `TestConsole/TestRsa.cs`
+
+> Algorithm is from `System.Security.Cryptography`

@@ -4,19 +4,21 @@ using Instech.CryptHelper;
 
 namespace TestConsole
 {
-    public class TestRc4
+    public class TestRsa
     {
         public void Run(string raw)
         {
-            var rc4 = new Rc4();
-            const string key = "HelloWorld!";
+            const int byteSize = 512 / 8;
+            raw = raw + raw;
+            Rsa.GenerateKey(byteSize, out var pk, out var sk);
+            Utils.WriteByteArray(pk, "pk");
+            Utils.WriteByteArray(sk, "sk");
+
             var e = Encoding.UTF8;
-            rc4.SetKeyAndInit(key);
             Utils.WriteByteArray(e.GetBytes(raw), "raw");
-            var secret = rc4.Encrypt(e.GetBytes(raw));
+            var secret = Rsa.Encrypt(e.GetBytes(raw), pk);
             Utils.WriteByteArray(secret, "secret");
-            rc4.SetKeyAndInit(key);
-            var real = rc4.Encrypt(secret);
+            var real = Rsa.Decrypt(secret, pk, sk);
             Console.WriteLine("Real: " + e.GetString(real));
         }
     }

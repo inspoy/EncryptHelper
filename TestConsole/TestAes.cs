@@ -4,20 +4,20 @@ using Instech.CryptHelper;
 
 namespace TestConsole
 {
-    public class TestRc4
+    public class TestAes
     {
         public void Run(string raw)
         {
-            var rc4 = new Rc4();
-            const string key = "HelloWorld!";
+            var aes = new Aes();
             var e = Encoding.UTF8;
-            rc4.SetKeyAndInit(key);
+            var key = aes.Init();
+            Utils.WriteByteArray(key, "key");
             Utils.WriteByteArray(e.GetBytes(raw), "raw");
-            var secret = rc4.Encrypt(e.GetBytes(raw));
+            var secret = aes.Encrypt(e.GetBytes(raw));
             Utils.WriteByteArray(secret, "secret");
-            rc4.SetKeyAndInit(key);
-            var real = rc4.Encrypt(secret);
+            var real = aes.Decrypt(secret);
             Console.WriteLine("Real: " + e.GetString(real));
+            aes.UnInit();
         }
     }
 }
