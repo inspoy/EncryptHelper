@@ -10,7 +10,8 @@ namespace TestConsole
             Console.WriteLine("Hello World!");
             //RunAes();
             //RunRc4();
-            RunRsa();
+            //RunRsa();
+            TestRsa.GenKeyPair();
         }
 
         private static void RunAes()
