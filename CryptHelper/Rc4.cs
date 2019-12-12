@@ -2,7 +2,7 @@
  * == Inspoy Technology ==
  * Assembly: Instech.EncryptHelper
  * FileName: Rc4.cs
- * Created on 2019/12/12 by chengyongtan
+ * Created on 2019/12/12 by inspoy
  * All rights reserved.
  */
 

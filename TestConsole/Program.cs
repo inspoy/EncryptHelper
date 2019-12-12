@@ -8,9 +8,10 @@ namespace TestConsole
         private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            //RunAes();
-            //RunRc4();
-            //RunRsa();
+            RunAes();
+            RunRc4();
+            RunRsa();
+            RunHash();
             TestRsa.GenKeyPair();
         }
 
@@ -36,6 +37,14 @@ namespace TestConsole
             var runner = new TestRsa();
             runner.Run(Raw);
             Console.WriteLine("=====END RSA=====");
+        }
+
+        private static void RunHash()
+        {
+            Console.WriteLine("=====  HASH =====");
+            var runner = new TestHash();
+            runner.Run(Raw);
+            Console.WriteLine("=====END HASH====");
         }
     }
 
