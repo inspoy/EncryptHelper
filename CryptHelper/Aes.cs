@@ -1,10 +1,18 @@
-﻿using System;
+/**
+ * == Inspoy Technology ==
+ * Assembly: Instech.EncryptHelper
+ * FileName: Aes.cs
+ * Created on 2019/12/12 by chengyongtan
+ * All rights reserved.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Instech.CryptHelper
+namespace Instech.EncryptHelper
 {
     public class Aes
     {

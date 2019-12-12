@@ -1,16 +1,24 @@
+/**
+ * == Inspoy Technology ==
+ * Assembly: Instech.EncryptHelper
+ * FileName: Rsa.cs
+ * Created on 2019/12/12 by chengyongtan
+ * All rights reserved.
+ */
+
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Instech.CryptHelper
+namespace Instech.EncryptHelper
 {
     public static class Rsa
     {
         /// <summary>
-        /// Éú³ÉÒ»¶ÔĞÂµÄ¹«Ô¿ºÍË½Ô¿
+        /// ç”Ÿæˆä¸€å¯¹æ–°çš„å…¬é’¥å’Œç§é’¥
         /// </summary>
-        /// <param name="size">×Ö½Ú³¤¶È£¬±ØĞëÊÇ2µÄÕûÊı´ÎÃİ(´óÓÚ63)</param>
+        /// <param name="size">å­—èŠ‚é•¿åº¦ï¼Œå¿…é¡»æ˜¯2çš„æ•´æ•°æ¬¡å¹‚(å¤§äº63)</param>
         /// <param name="pk"></param>
         /// <param name="sk"></param>
         public static void GenerateKey(int size, out byte[] pk, out byte[] sk)
@@ -41,7 +49,7 @@ namespace Instech.CryptHelper
             var maxLength = pk.Length - 11;
             if (src.Length > maxLength)
             {
-                // ÄÚÈİ¹ı³¤£¬·Ö¿éÑ¹Ëõ
+                // å†…å®¹è¿‡é•¿ï¼Œåˆ†å—å‹ç¼©
                 var ret = new byte[(src.Length / maxLength + 1) * pk.Length];
                 for (var i = 0; i < src.Length / maxLength + 1; ++i)
                 {
@@ -79,7 +87,7 @@ namespace Instech.CryptHelper
             }
             if (src.Length > pk.Length)
             {
-                // ÄÚÈİ¹ı³¤£¬ĞèÒª·Ö¿é
+                // å†…å®¹è¿‡é•¿ï¼Œéœ€è¦åˆ†å—
                 var ret = new List<byte>(src.Length);
                 var block = new byte[pk.Length];
                 for (var i = 0; i < src.Length / pk.Length; ++i)

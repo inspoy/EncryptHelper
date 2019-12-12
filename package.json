@@ -1,0 +1,13 @@
+{
+  "name": "cc.inspoy.encrypthelper",
+  "displayName": "Instech.EncryptHelper",
+  "version": "0.0.1",
+  "unity": "2019.1",
+  "description": "提供相关加密算法和哈希算法，纯C#无依赖",
+  "keywords": [
+    "instech",
+    "crypto"
+  ],
+  "dependencies": {
+  }
+}

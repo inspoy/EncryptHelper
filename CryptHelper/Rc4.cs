@@ -1,7 +1,15 @@
+/**
+ * == Inspoy Technology ==
+ * Assembly: Instech.EncryptHelper
+ * FileName: Rc4.cs
+ * Created on 2019/12/12 by chengyongtan
+ * All rights reserved.
+ */
+
 using System;
 using System.Text;
 
-namespace Instech.CryptHelper
+namespace Instech.EncryptHelper
 {
     public class Rc4
     {
