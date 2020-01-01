@@ -20,6 +20,10 @@ namespace TestConsole
             Utils.WriteByteArray(secret, "secret");
             var real = Rsa.Decrypt(secret, pk, sk);
             Console.WriteLine("Real: " + e.GetString(real));
+            if (!raw.Equals(e.GetString(real)))
+            {
+                throw new Exception("Rsa Test Failed");
+            }
         }
 
         public static void GenKeyPair()

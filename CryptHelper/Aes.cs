@@ -21,11 +21,19 @@ namespace Instech.EncryptHelper
         public byte[] Init(byte[] key = null)
         {
             _provider = new AesCryptoServiceProvider();
-            if (key != null && key.Length > 0)
+            if (key != null && key.Length == 48)
             {
-                _provider.Key = key;
+                var kk = new byte[32];
+                var iv = new byte[16];
+                Array.Copy(key, 0, kk, 0, 32);
+                Array.Copy(key, 32, iv, 0, 16);
+                _provider.Key = kk;
+                _provider.IV = iv;
             }
-            return _provider.Key;
+            var ret = new byte[_provider.Key.Length + _provider.IV.Length];
+            _provider.Key.CopyTo(ret, 0);
+            _provider.IV.CopyTo(ret, _provider.Key.Length);
+            return ret;
         }
 
         public byte[] Encrypt(string src)

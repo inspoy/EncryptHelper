@@ -15,9 +15,14 @@ namespace TestConsole
             Utils.WriteByteArray(e.GetBytes(raw), "raw");
             var secret = aes.Encrypt(e.GetBytes(raw));
             Utils.WriteByteArray(secret, "secret");
+            aes.Init(key);
             var real = aes.Decrypt(secret);
             Console.WriteLine("Real: " + e.GetString(real));
             aes.UnInit();
+            if (!raw.Equals(e.GetString(real)))
+            {
+                throw new Exception("Aes Test Failed");
+            }
         }
     }
 }

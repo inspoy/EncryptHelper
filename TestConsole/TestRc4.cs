@@ -18,6 +18,10 @@ namespace TestConsole
             rc4.SetKeyAndInit(key);
             var real = rc4.Encrypt(secret);
             Console.WriteLine("Real: " + e.GetString(real));
+            if (!raw.Equals(e.GetString(real)))
+            {
+                throw new Exception("Rc4 Test Failed");
+            }
         }
     }
 }
