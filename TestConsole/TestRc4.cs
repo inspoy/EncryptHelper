@@ -13,10 +13,12 @@ namespace TestConsole
             var e = Encoding.UTF8;
             rc4.SetKeyAndInit(key);
             Utils.WriteByteArray(e.GetBytes(raw), "raw");
-            var secret = rc4.Encrypt(e.GetBytes(raw));
+            var secret = e.GetBytes(raw);
+            rc4.Encrypt(secret);
             Utils.WriteByteArray(secret, "secret");
             rc4.SetKeyAndInit(key);
-            var real = rc4.Encrypt(secret);
+            var real = secret;
+            rc4.Encrypt(real);
             Console.WriteLine("Real: " + e.GetString(real));
             if (!raw.Equals(e.GetString(real)))
             {
