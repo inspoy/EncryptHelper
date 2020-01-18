@@ -69,24 +69,7 @@ namespace Instech.EncryptHelper
             return key;
         }
 
-        private byte[] GetKey(int len)
-        {
-            var ret = new byte[len];
-            var i = 0;
-            var j = 0;
-            for (var k = 0; k < len; ++k)
-            {
-                i = (i + 1) % 256;
-                j = (j + State[i]) % 256;
-                var t = State[i];
-                State[i] = State[j];
-                State[j] = t;
-                ret[k] = State[State[i] + State[j] % 256];
-            }
-            return ret;
-        }
-
-        public byte[] Encrypt(byte[] src)
+        public void Encrypt(byte[] src)
         {
             if (State == null)
             {
@@ -96,17 +79,23 @@ namespace Instech.EncryptHelper
             {
                 throw new ArgumentNullException(nameof(src));
             }
-            if (src.Length == 0)
+            var len = src.Length;
+            if (len == 0)
             {
-                return Array.Empty<byte>();
+                return;
             }
-            var keys = GetKey(src.Length);
-            var ret = new byte[src.Length];
-            for (var i = 0; i < src.Length; ++i)
+            var i = 0;
+            var j = 0;
+            for (var k = 0; k < len; ++k)
             {
-                ret[i] = (byte)(src[i] ^ keys[i]);
+                i = (i + 1) % 256;
+                j = (j + State[i]) % 256;
+                var t = State[i];
+                State[i] = State[j];
+                State[j] = t;
+                var key = State[State[i] + State[j] % 256];
+                src[k] = (byte)(src[k] ^ key);
             }
-            return ret;
         }
     }
 }
