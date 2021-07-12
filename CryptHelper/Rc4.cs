@@ -93,7 +93,7 @@ namespace Instech.EncryptHelper
                 var t = State[i];
                 State[i] = State[j];
                 State[j] = t;
-                var key = State[State[i] + State[j] % 256];
+                var key = State[(State[i] + State[j]) % 256];
                 src[k] = (byte)(src[k] ^ key);
             }
         }
